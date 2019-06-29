@@ -1,6 +1,11 @@
 #![deny(warnings)]
+<<<<<<< HEAD
 #![allow(clippy::many_single_char_names)]
 #![allow(clippy::needless_pass_by_value)]
+=======
+#![cfg_attr(feature = "cargo-clippy", allow(many_single_char_names))]
+#![cfg_attr(feature = "cargo-clippy", allow(needless_pass_by_value))]
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
 extern crate mpi;
 
 use std::os::raw::{c_int, c_void};

@@ -5,6 +5,7 @@
 #![warn(unused_extern_crates)]
 #![warn(unused_import_braces)]
 #![warn(unused_qualifications)]
+<<<<<<< HEAD
 #![warn(clippy::cast_possible_truncation)]
 #![warn(clippy::cast_possible_wrap)]
 #![warn(clippy::cast_precision_loss)]
@@ -21,6 +22,24 @@
 #![warn(clippy::string_add_assign)]
 #![warn(clippy::unicode_not_nfc)]
 #![warn(clippy::wrong_pub_self_convention)]
+=======
+#![cfg_attr(feature = "cargo-clippy", warn(cast_possible_truncation))]
+#![cfg_attr(feature = "cargo-clippy", warn(cast_possible_wrap))]
+#![cfg_attr(feature = "cargo-clippy", warn(cast_precision_loss))]
+#![cfg_attr(feature = "cargo-clippy", warn(cast_sign_loss))]
+#![cfg_attr(feature = "cargo-clippy", warn(enum_glob_use))]
+#![cfg_attr(feature = "cargo-clippy", warn(mut_mut))]
+#![cfg_attr(feature = "cargo-clippy", warn(mutex_integer))]
+#![cfg_attr(feature = "cargo-clippy", warn(non_ascii_literal))]
+#![cfg_attr(feature = "cargo-clippy", warn(nonminimal_bool))]
+#![cfg_attr(feature = "cargo-clippy", warn(option_unwrap_used))]
+#![cfg_attr(feature = "cargo-clippy", warn(result_unwrap_used))]
+#![cfg_attr(feature = "cargo-clippy", warn(single_match_else))]
+#![cfg_attr(feature = "cargo-clippy", warn(string_add))]
+#![cfg_attr(feature = "cargo-clippy", warn(string_add_assign))]
+#![cfg_attr(feature = "cargo-clippy", warn(unicode_not_nfc))]
+#![cfg_attr(feature = "cargo-clippy", warn(wrong_pub_self_convention))]
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
 
 //! Message Passing Interface bindings for Rust
 //!

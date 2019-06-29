@@ -9,19 +9,33 @@ use ffi::MPI_Comm;
 /// Contains arrays describing the layout of the
 /// [`CartesianCommunicator`](struct.CartesianCommunicator.html).
 ///
+<<<<<<< HEAD
 /// `dims[i]` is the extent of the array in axis `i`, `periods[i]` is `true` if axis `i` is periodic, and
 /// `coords[i]` is the cartesian coordinate for the local rank in axis `i`.
+=======
+/// dims[i] is the extent of the array in axis i, periods[i] is true if axis i is periodic, and
+/// coords[i] is the cartesian coordinate for the local rank in axis i.
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
 ///
 /// Each array, when received from a method in
 /// [`CartesianCommunicator`](struct.CartesianCommunicator.html), will be of length
 /// [`num_dimensions`](struct.CartesianCommunicator.html#method.num_dimensions).
 pub struct CartesianLayout {
+<<<<<<< HEAD
     /// `dims[i]` is the extent of the array in axis `i`
     pub dims: Vec<Count>,
     /// `periods[i]` is `true` if axis `i` is periodic, meaning an element at `dims[i] - 1` in axis `i`
     /// is neighbors with element 0 in axis `i`
     pub periods: Vec<bool>,
     /// `coords[i]` is the cartesian coordinate for the local rank in axis `i`
+=======
+    /// dims[i] is the extent of the array in axis i
+    pub dims: Vec<Count>,
+    /// periods[i] is true if axis i is periodic, meaning an element at dims[i] - 1 in axis i
+    /// is neighbors with element 0 in axis i
+    pub periods: Vec<bool>,
+    /// coords[i] is the cartesian coordinate for the local rank in axis i
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
     pub coords: Vec<Count>,
 }
 
@@ -228,7 +242,11 @@ impl CartesianCommunicator {
     /// # Standard section(s)
     /// 7.5.5 (MPI_Cart_rank)
     pub fn coordinates_to_rank(&self, coords: &[Count]) -> Rank {
+<<<<<<< HEAD
         let num_dims: usize = self
+=======
+        let num_dims = self
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
             .num_dimensions()
             .value_as()
             .expect("Received unexpected value from MPI_Cartdim_get");
@@ -242,6 +260,7 @@ impl CartesianCommunicator {
 
         let layout = self.get_layout();
 
+<<<<<<< HEAD
         for (i, coord) in coords.iter().enumerate() {
             if !layout.periods[i] {
                 assert!(
@@ -256,6 +275,22 @@ impl CartesianCommunicator {
                      CartesianCoordinator (dims[{}] = {})",
                     i,
                     *coord,
+=======
+        for i in 0..num_dims {
+            if !layout.periods[i] {
+                assert!(
+                    coords[i] > 0,
+                    "The non-periodic coordinate (coords[{}] = {}) must be greater than 0.",
+                    i,
+                    coords[i]
+                );
+                assert!(
+                    coords[i] <= layout.dims[i],
+                    "The non-period coordinate (coords[{}] = {}) must be within the bounds of the \
+                     CartesianCoordinator (dims[{}] = {})",
+                    i,
+                    coords[i],
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
                     i,
                     layout.dims[i]
                 );

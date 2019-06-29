@@ -50,7 +50,17 @@ fn main() {
     }
 
     let mut builder = bindgen::builder();
+<<<<<<< HEAD
     // Let `bindgen` know about header search directories.
+=======
+    // Let `bindgen` know about libraries and search directories.
+    for lib in &lib.libs {
+        builder = builder.link(lib.clone());
+    }
+    for dir in &lib.lib_paths {
+        builder = builder.clang_arg(format!("-L{}", dir.display()));
+    }
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
     for dir in &lib.include_paths {
         builder = builder.clang_arg(format!("-I{}", dir.display()));
     }
@@ -59,6 +69,11 @@ fn main() {
     let bindings = builder
         .header("src/rsmpi.h")
         .emit_builtins()
+<<<<<<< HEAD
+=======
+        .blacklist_type("mpich_struct_mpi_long_double_int")
+        .blacklist_type("max_align_t") // https://github.com/servo/rust-bindgen/issues/550
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
         .generate()
         .unwrap();
 

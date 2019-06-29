@@ -24,8 +24,13 @@ programming language. This library tries to bridge the gap into a more rustic wo
 
 An implementation of the C language interface that conforms to MPI-3.1. `rsmpi` is currently tested with these implementations:
 
+<<<<<<< HEAD
 - [OpenMPI][OpenMPI] 3.0.4, 3.1.4, 4.0.1
 - [MPICH][MPICH] 3.3, 3.2.1
+=======
+- [OpenMPI][OpenMPI] 2.0.4, 2.1.2, 3.0.0
+- [MPICH][MPICH] 3.2.1, 3.1.4
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
 - [MS-MPI (Windows)][MS-MPI] 10.0.0
 
 For a reasonable chance of success with `rsmpi` any MPI implementation that you want to use with it should satisfy the following assumptions that `rsmpi` currently makes:

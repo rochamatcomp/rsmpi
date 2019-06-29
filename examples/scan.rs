@@ -6,7 +6,11 @@ use mpi::topology::Rank;
 use mpi::traits::*;
 
 fn fac(n: Rank) -> Rank {
+<<<<<<< HEAD
     (1..=n).product()
+=======
+    (1..n + 1).product()
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
 }
 
 fn main() {

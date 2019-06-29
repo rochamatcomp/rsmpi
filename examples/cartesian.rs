@@ -1,5 +1,8 @@
 #![deny(warnings)]
+<<<<<<< HEAD
 #![allow(clippy::cognitive_complexity)]
+=======
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
 extern crate mpi;
 
 use mpi::traits::*;

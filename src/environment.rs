@@ -244,18 +244,26 @@ pub fn version() -> (c_int, c_int) {
 pub fn library_version() -> Result<String, FromUtf8Error> {
     let bufsize = unsafe_extern_static!(ffi::RSMPI_MAX_LIBRARY_VERSION_STRING)
         .value_as()
+<<<<<<< HEAD
         .unwrap_or_else(|_| {
             panic!(
                 "MPI_MAX_LIBRARY_SIZE ({}) cannot be expressed as a usize.",
                 unsafe_extern_static!(ffi::RSMPI_MAX_LIBRARY_VERSION_STRING)
             )
         });
+=======
+        .expect(&format!(
+            "MPI_MAX_LIBRARY_SIZE ({}) cannot be expressed as a usize.",
+            unsafe_extern_static!(ffi::RSMPI_MAX_LIBRARY_VERSION_STRING)
+        ));
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
     let mut buf = vec![0u8; bufsize];
     let mut len: c_int = 0;
 
     unsafe {
         ffi::MPI_Get_library_version(buf.as_mut_ptr() as *mut c_char, &mut len);
     }
+<<<<<<< HEAD
     buf.truncate(len.value_as().unwrap_or_else(|_| {
         panic!(
             "Length of library version string ({}) cannot \
@@ -263,6 +271,13 @@ pub fn library_version() -> Result<String, FromUtf8Error> {
             len
         )
     }));
+=======
+    buf.truncate(len.value_as().expect(&format!(
+        "Length of library version string ({}) cannot \
+         be expressed as a usize.",
+        len
+    )));
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
     String::from_utf8(buf)
 }
 
@@ -272,6 +287,7 @@ pub fn library_version() -> Result<String, FromUtf8Error> {
 pub fn processor_name() -> Result<String, FromUtf8Error> {
     let bufsize = unsafe_extern_static!(ffi::RSMPI_MAX_PROCESSOR_NAME)
         .value_as()
+<<<<<<< HEAD
         .unwrap_or_else(|_| {
             panic!(
                 "MPI_MAX_LIBRARY_SIZE ({}) \
@@ -280,12 +296,21 @@ pub fn processor_name() -> Result<String, FromUtf8Error> {
                 unsafe_extern_static!(ffi::RSMPI_MAX_PROCESSOR_NAME)
             )
         });
+=======
+        .expect(&format!(
+            "MPI_MAX_LIBRARY_SIZE ({}) \
+             cannot be expressed as a \
+             usize.",
+            unsafe_extern_static!(ffi::RSMPI_MAX_PROCESSOR_NAME)
+        ));
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
     let mut buf = vec![0u8; bufsize];
     let mut len: c_int = 0;
 
     unsafe {
         ffi::MPI_Get_processor_name(buf.as_mut_ptr() as *mut c_char, &mut len);
     }
+<<<<<<< HEAD
     buf.truncate(len.value_as().unwrap_or_else(|_| {
         panic!(
             "Length of processor name string ({}) cannot be \
@@ -293,6 +318,13 @@ pub fn processor_name() -> Result<String, FromUtf8Error> {
             len
         )
     }));
+=======
+    buf.truncate(len.value_as().expect(&format!(
+        "Length of processor name string ({}) cannot be \
+         expressed as a usize.",
+        len
+    )));
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
     String::from_utf8(buf)
 }
 

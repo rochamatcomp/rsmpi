@@ -26,6 +26,7 @@ env:
 
 matrix:
   include:
+<<<<<<< HEAD
     - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=mpich MPI_LIBRARY_VERSION=3.3 RELEASE_CONFIG=true
       rust: stable
       os: linux
@@ -45,6 +46,27 @@ matrix:
       rust: beta
       os: linux
     - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=mpich MPI_LIBRARY_VERSION=3.3 RELEASE_CONFIG=false
+=======
+    - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=mpich MPI_LIBRARY_VERSION=3.2.1 RELEASE_CONFIG=true
+      rust: stable
+      os: linux
+    - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=mpich MPI_LIBRARY_VERSION=3.1.4 RELEASE_CONFIG=false
+      rust: stable
+      os: linux
+    - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=openmpi MPI_LIBRARY_VERSION=3.1.2 RELEASE_CONFIG=false
+      rust: stable
+      os: linux
+    - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=openmpi MPI_LIBRARY_VERSION=3.0.2 RELEASE_CONFIG=false
+      rust: stable
+      os: linux
+    - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=openmpi MPI_LIBRARY_VERSION=2.1.5 RELEASE_CONFIG=false
+      rust: stable
+      os: linux
+    - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=mpich MPI_LIBRARY_VERSION=3.2.1 RELEASE_CONFIG=false
+      rust: beta
+      os: linux
+    - env: LIBCLANG_PATH=/usr/lib/llvm-3.9/lib MPI_LIBRARY=mpich MPI_LIBRARY_VERSION=3.2.1 RELEASE_CONFIG=false
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
       rust: nightly
       os: linux
     - env: MPI_LIBRARY=msmpi MPI_LIBRARY_VERSION=10.0.0 RELEASE_CONFIG=false
@@ -83,7 +105,11 @@ script:
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then env RUSTFLAGS="--deny warnings" cargo test --all -v --no-default-features; fi
   - env RUSTFLAGS="--deny warnings" sh ci/run-examples.sh
   - if [ "$TRAVIS_RUST_VERSION" = "nightly" ]; then
+<<<<<<< HEAD
       env RUSTFLAGS="--deny warnings" cargo clippy -v --all --examples --tests;
+=======
+      env RUSTFLAGS="--deny warnings" cargo clippy -v;
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
     fi
 
 before_deploy:

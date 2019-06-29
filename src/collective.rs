@@ -1774,7 +1774,11 @@ impl UnsafeUserOperation {
 /// # Standard section(s)
 ///
 /// 5.9.7
+<<<<<<< HEAD
 #[allow(clippy::needless_pass_by_value)]
+=======
+#[cfg_attr(feature = "cargo-clippy", allow(needless_pass_by_value))]
+>>>>>>> a4c89e7a90608833ca21f9aa30e3af57e4bb5fdd
 pub fn reduce_local_into<S: ?Sized, R: ?Sized, O>(inbuf: &S, inoutbuf: &mut R, op: O)
 where
     S: Buffer,
